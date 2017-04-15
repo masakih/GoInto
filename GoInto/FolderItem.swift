@@ -8,13 +8,22 @@
 
 import Cocoa
 
+extension ActionListener {
+    @IBAction func changeFolder(_ sender: Any?) {
+        guard let item = owner as? FolderItem
+            else { return }
+        item.set()
+    }
+}
+
 extension Selector {
-    static let changeFolder = #selector(FolderItem.changeFolder(_:))
+    static let changeFolder = #selector(ActionListener.changeFolder(_:))
 }
 
 class FolderItem: StatusItem {
     let url: URL
     let menuItem = NSMenuItem()
+    let listener = ActionListener()
     
     init(_ url: URL) {
         self.url = url
@@ -30,11 +39,8 @@ class FolderItem: StatusItem {
         menuItem.image = fitSize(work.icon(forFile: url.path))
         
         menuItem.action = .changeFolder
-        menuItem.target = self
-    }
-    
-    @IBAction func changeFolder(_ : Any?) {
-        set()
+        menuItem.target = listener
+        listener.owner = self
     }
     
     func set() {
@@ -61,15 +67,6 @@ class FolderItem: StatusItem {
         } else {
             menuItem.state = NSOffState
         }
-    }
-    
-    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        return true
-    }
-}
-extension FolderItem: Equatable {
-    static func ==(lhs: FolderItem, rhs: FolderItem) -> Bool {
-        return lhs.url == rhs.url
     }
 }
 
