@@ -34,7 +34,7 @@
 
 /* Begin PBXFileReference section */
 		F40EB6BC1EA1A05600FEE444 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F40EB6BE1EA1A55700FEE444 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F40EB6BE1EA1A55700FEE444 /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F40EB6C31EA1A59700FEE444 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F40EB6C61EA1A94200FEE444 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F40EB6C71EA1CD7A00FEE444 /* ImageTypeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTypeItem.swift; sourceTree = "<group>"; };
