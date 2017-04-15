@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F40EB6B91EA1A04C00FEE444 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F40EB6BB1EA1A04C00FEE444 /* InfoPlist.strings */; };
 		F40EB6BF1EA1A55700FEE444 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F40EB6BD1EA1A55700FEE444 /* Localizable.strings */; };
+		F40EB6C81EA1CD7A00FEE444 /* ImageTypeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40EB6C71EA1CD7A00FEE444 /* ImageTypeItem.swift */; };
+		F40EB6CA1EA1D7B500FEE444 /* ImageType.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40EB6C91EA1D7B500FEE444 /* ImageType.plist */; };
 		F47B06EB1E9A5DF9006711D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */; };
 		F47B06EF1E9A5DF9006711D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */; };
 		F47B06FD1E9A5DF9006711D9 /* GoIntoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B06FC1E9A5DF9006711D9 /* GoIntoTests.swift */; };
@@ -35,6 +37,8 @@
 		F40EB6BE1EA1A55700FEE444 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F40EB6C31EA1A59700FEE444 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F40EB6C61EA1A94200FEE444 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F40EB6C71EA1CD7A00FEE444 /* ImageTypeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTypeItem.swift; sourceTree = "<group>"; };
+		F40EB6C91EA1D7B500FEE444 /* ImageType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImageType.plist; sourceTree = "<group>"; };
 		F47B06E71E9A5DF9006711D9 /* GoInto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoInto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,9 +99,11 @@
 				F47B070B1E9A65FA006711D9 /* StatusItem.swift */,
 				F47B070F1EA10A1A006711D9 /* FolderItem.swift */,
 				F47B07111EA10A3E006711D9 /* ChooseFolerItem.swift */,
+				F40EB6C71EA1CD7A00FEE444 /* ImageTypeItem.swift */,
 				F47B07171EA10A88006711D9 /* QuitItem.swift */,
 				F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */,
 				F47B06F31E9A5DF9006711D9 /* Info.plist */,
+				F40EB6C91EA1D7B500FEE444 /* ImageType.plist */,
 				F40EB6BB1EA1A04C00FEE444 /* InfoPlist.strings */,
 				F40EB6BD1EA1A55700FEE444 /* Localizable.strings */,
 				F40EB6C41EA1A59700FEE444 /* Localizable.strings.sed */,
@@ -200,6 +206,7 @@
 			files = (
 				F47B06EF1E9A5DF9006711D9 /* Assets.xcassets in Resources */,
 				F40EB6BF1EA1A55700FEE444 /* Localizable.strings in Resources */,
+				F40EB6CA1EA1D7B500FEE444 /* ImageType.plist in Resources */,
 				F40EB6B91EA1A04C00FEE444 /* InfoPlist.strings in Resources */,
 				F47B07081E9A6071006711D9 /* MainMenu.xib in Resources */,
 			);
@@ -223,6 +230,7 @@
 				F47B06EB1E9A5DF9006711D9 /* AppDelegate.swift in Sources */,
 				F47B07101EA10A1A006711D9 /* FolderItem.swift in Sources */,
 				F47B07181EA10A88006711D9 /* QuitItem.swift in Sources */,
+				F40EB6C81EA1CD7A00FEE444 /* ImageTypeItem.swift in Sources */,
 				F47B070E1E9A6E55006711D9 /* StatusBar.swift in Sources */,
 				F47B07121EA10A3E006711D9 /* ChooseFolerItem.swift in Sources */,
 			);

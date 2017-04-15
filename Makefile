@@ -9,7 +9,7 @@ APP_NAME=$(BUILD_PATH)/$(DEPLOYMENT)/$(PRODUCT_NAME)
 SCHEME=GoInto
 INFO_PLIST=GoInto/Info.plist
 
-LOCALIZE_FILES=GoInto/QuitItem.swift GoInto/ChooseFolerItem.swift
+LOCALIZE_FILES=GoInto/QuitItem.swift GoInto/ChooseFolerItem.swift GoInto/ImageTypeItem.swift
 
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
 VERSION=$(shell $(VER_CMD))
@@ -28,7 +28,7 @@ checkLocalizable:
 	(cd GoInto/ja.lproj; ${MAKE} $@;)
 
 deploy:
-	test -z "`git status --porcelain`"
+#	test -z "`git status --porcelain`"
 
 release: updateRevision
 	xcodebuild -derivedDataPath=build -configuration $(DEPLOYMENT)
