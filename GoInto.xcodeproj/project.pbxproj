@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F40EB6B91EA1A04C00FEE444 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F40EB6BB1EA1A04C00FEE444 /* InfoPlist.strings */; };
+		F40EB6BF1EA1A55700FEE444 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F40EB6BD1EA1A55700FEE444 /* Localizable.strings */; };
 		F47B06EB1E9A5DF9006711D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */; };
 		F47B06EF1E9A5DF9006711D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */; };
 		F47B06FD1E9A5DF9006711D9 /* GoIntoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B06FC1E9A5DF9006711D9 /* GoIntoTests.swift */; };
@@ -29,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F40EB6BC1EA1A05600FEE444 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F40EB6BE1EA1A55700FEE444 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F40EB6C31EA1A59700FEE444 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
+		F40EB6C61EA1A94200FEE444 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F47B06E71E9A5DF9006711D9 /* GoInto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoInto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +98,9 @@
 				F47B07171EA10A88006711D9 /* QuitItem.swift */,
 				F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */,
 				F47B06F31E9A5DF9006711D9 /* Info.plist */,
+				F40EB6BB1EA1A04C00FEE444 /* InfoPlist.strings */,
+				F40EB6BD1EA1A55700FEE444 /* Localizable.strings */,
+				F40EB6C41EA1A59700FEE444 /* Localizable.strings.sed */,
 			);
 			path = GoInto;
 			sourceTree = "<group>";
@@ -171,6 +180,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = F47B06DE1E9A5DF9006711D9;
 			productRefGroup = F47B06E81E9A5DF9006711D9 /* Products */;
@@ -189,6 +199,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F47B06EF1E9A5DF9006711D9 /* Assets.xcassets in Resources */,
+				F40EB6BF1EA1A55700FEE444 /* Localizable.strings in Resources */,
+				F40EB6B91EA1A04C00FEE444 /* InfoPlist.strings in Resources */,
 				F47B07081E9A6071006711D9 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,11 +246,40 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		F40EB6BB1EA1A04C00FEE444 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F40EB6BC1EA1A05600FEE444 /* ja */,
+				F40EB6C61EA1A94200FEE444 /* Base */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F40EB6BD1EA1A55700FEE444 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F40EB6BE1EA1A55700FEE444 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F40EB6C41EA1A59700FEE444 /* Localizable.strings.sed */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F40EB6C31EA1A59700FEE444 /* ja */,
+			);
+			name = Localizable.strings.sed;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		F47B06FF1E9A5DF9006711D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -276,7 +317,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -289,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -320,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -402,6 +444,7 @@
 				F47B07031E9A5DF9006711D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F47B07041E9A5DF9006711D9 /* Build configuration list for PBXNativeTarget "GoIntoTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +453,7 @@
 				F47B07061E9A5DF9006711D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
