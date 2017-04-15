@@ -15,7 +15,8 @@ extension Selector {
 class QuitItem: StatusItem {
     let menuItem = NSMenuItem()
     init() {
-        menuItem.title = "Quit Go into"
+        let format = NSLocalizedString("Quit %@", comment: "Quit Menu Item")
+        menuItem.title = String(format: format, AppDelegate.appName)
         menuItem.action = .quit
         menuItem.target = self
     }

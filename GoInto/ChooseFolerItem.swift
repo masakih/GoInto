@@ -18,7 +18,7 @@ class ChooseFolerItem: StatusItem {
     
     init(_ handler: @escaping ((URL) -> Void)) {
         urlSelector = handler
-        menuItem.title = "Choose Folder"
+        menuItem.title = NSLocalizedString("Choose Folder", comment: "Choose Folder MenuItem")
         menuItem.action = .selectFolder
         menuItem.target = self
     }
@@ -30,9 +30,9 @@ class ChooseFolerItem: StatusItem {
         panel.canChooseFiles = false
         panel.canCreateDirectories = true
         
-        panel.prompt = "Choose Folder"
-        panel.title = "Choose Folder"
-        panel.message = "Choose Folder for Save Screenshot"
+        panel.prompt = NSLocalizedString("Choose Folder", comment: "Choose Folder Open Panel Prompt")
+        panel.title = NSLocalizedString("Choose Folder", comment: "Choose Folder Open Panel Title")
+        panel.message = NSLocalizedString("Choose Folder for Save Screenshot", comment: "Choose Folder Open Panel Message")
         
         guard panel.runModal() == NSFileHandlingPanelOKButton,
             let url = panel.directoryURL else { return }

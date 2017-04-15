@@ -13,6 +13,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var statusBar: StatusBar?
     
+    class var appName: String {
+        guard let dict = Bundle.main.localizedInfoDictionary,
+            let name = dict["CFBundleDisplayName"] as? String
+            else { return "GO into" }
+        return name
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusBar = StatusBar()
     }
