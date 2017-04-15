@@ -78,7 +78,6 @@ class ImageTypeItem: StatusItem {
         guard let item = sender as? NSMenuItem,
             let typeName = item.representedObject as? String
             else { return }
-        print(typeName)
         set(typeName)
     }
     
