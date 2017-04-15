@@ -8,24 +8,20 @@
 
 import Cocoa
 
-extension ActionListener {
-    @IBAction func quit(_ sender: Any?) {
-        NSApplication.shared().terminate(nil)
-    }
-}
-
 extension Selector {
-    static let quit = #selector(ActionListener.quit(_:))
+    static let quit = #selector(QuitItem.quit(_:))
 }
 
 class QuitItem: StatusItem {
     let menuItem = NSMenuItem()
-    let listener = ActionListener()
     init() {
-        listener.owner = self
         let format = NSLocalizedString("Quit %@", comment: "Quit Menu Item")
         menuItem.title = String(format: format, AppDelegate.appName)
         menuItem.action = .quit
-        menuItem.target = listener
+        menuItem.target = self
+    }
+    
+    @IBAction func quit(_ sender: Any?) {
+        NSApplication.shared().terminate(nil)
     }
 }

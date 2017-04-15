@@ -8,12 +8,22 @@
 
 import Cocoa
 
-let chooseFolerItemKey = "ChooseFolerItem"
+extension Selector {
+    static let selectFolder = #selector(ChooseFolerItem.selectFolder(_:))
+}
 
-extension ActionListener {
+class ChooseFolerItem: StatusItem {
+    let menuItem = NSMenuItem()
+    let urlSelector: (URL) -> Void
+    
+    init(_ handler: @escaping ((URL) -> Void)) {
+        urlSelector = handler
+        menuItem.title = NSLocalizedString("Choose Folder", comment: "Choose Folder MenuItem")
+        menuItem.action = .selectFolder
+        menuItem.target = self
+    }
+    
     @IBAction func selectFolder(_ sender: Any?) {
-        guard let item = owner as? ChooseFolerItem
-            else { return }
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
@@ -26,24 +36,6 @@ extension ActionListener {
         
         guard panel.runModal() == NSFileHandlingPanelOKButton,
             let url = panel.directoryURL else { return }
-        item.urlSelector(url)
-    }
-}
-
-extension Selector {
-    static let selectFolder = #selector(ActionListener.selectFolder(_:))
-}
-
-class ChooseFolerItem: StatusItem {
-    let menuItem = NSMenuItem()
-    let urlSelector: (URL) -> Void
-    let listener = ActionListener()
-    
-    init(_ handler: @escaping ((URL) -> Void)) {
-        urlSelector = handler
-        menuItem.title = NSLocalizedString("Choose Folder", comment: "Choose Folder MenuItem")
-        menuItem.action = .selectFolder
-        menuItem.target = listener
-        listener.owner = self
+        urlSelector(url)
     }
 }
