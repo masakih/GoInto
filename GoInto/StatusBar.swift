@@ -30,6 +30,8 @@ final class StatusBar: NSObject {
         items.append(SeparatorItem())
         items.append(ChooseFolerItem(appendFolder))
         items.append(SeparatorItem())
+        items.append(ImageTypeItem())
+        items.append(SeparatorItem())
         items.append(QuitItem())
         
         items.reversed().forEach { $0.enter(menu) }
@@ -65,6 +67,9 @@ extension StatusBar: NSMenuDelegate {
         items
             .flatMap { $0 as? FolderItem }
             .forEach { $0.update(url) }
+        items
+            .flatMap { $0 as? ImageTypeItem }
+            .forEach { $0.update() }
     }
 }
 

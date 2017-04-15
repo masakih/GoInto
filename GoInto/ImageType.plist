@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>com.adobe.pdf</string>
+	<string>public.jpeg</string>
+	<string>public.png</string>
+	<string>com.compuserve.gif</string>
+	<string>public.tiff</string>
+	<string>public.jpeg-2000</string>
+	<string>com.microsoft.bmp</string>
+	<string>com.adobe.photoshop-image</string>
+	<string>com.microsoft.cur</string>
+	<string>com.truevision.tga-image</string>
+	<string>com.ilm.openexr-image</string>
+	<string>public.pbm</string>
+	<string>com.apple.atx</string>
+	<string>org.khronos.astc</string>
+	<string>org.khronos.ktx</string>
+	<string>com.apple.rjpeg</string>
+</array>
+</plist>
