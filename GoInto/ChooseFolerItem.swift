@@ -16,7 +16,6 @@ extension ActionListener {
         panel.allowsMultipleSelection = false
         panel.canChooseFiles = false
         panel.canCreateDirectories = true
-        
         panel.prompt = NSLocalizedString("Choose Folder", comment: "Choose Folder Open Panel Prompt")
         panel.title = NSLocalizedString("Choose Folder", comment: "Choose Folder Open Panel Title")
         panel.message = NSLocalizedString("Choose Folder for Save Screenshot", comment: "Choose Folder Open Panel Message")

@@ -28,12 +28,8 @@ class Screenshot {
         }
     }
     var type: String {
-        get {
-            return screencaptureAttribute(.type) ?? "jpeg"
-        }
-        set {
-            setScreencaptureAttribute(newValue, for: .type)
-        }
+        get { return screencaptureAttribute(.type) ?? "jpeg" }
+        set { setScreencaptureAttribute(newValue, for: .type) }
     }
     
     @available(macOS, deprecated: 10.12)
@@ -41,7 +37,6 @@ class Screenshot {
         let process = Process()
         process.launchPath = "/usr/bin/killall"
         process.arguments = ["SystemUIServer"]
-        
         process.launch()
     }
     
@@ -49,10 +44,8 @@ class Screenshot {
         let process = Process()
         process.launchPath = "/usr/bin/defaults"
         process.arguments = ["read", "com.apple.screencapture", attr.rawValue]
-        
         let pipe = Pipe()
         process.standardOutput = pipe
-        
         process.launch()
         process.waitUntilExit()
         
@@ -67,7 +60,6 @@ class Screenshot {
         let process = Process()
         process.launchPath = "/usr/bin/defaults"
         process.arguments = ["write", "com.apple.screencapture", attr.rawValue, value]
-        
         process.launch()
         process.waitUntilExit()
         

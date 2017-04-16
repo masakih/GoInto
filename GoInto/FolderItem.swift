@@ -35,7 +35,6 @@ class FolderItem: StatusItem {
         
         let work = NSWorkspace.shared()
         menuItem.image = fitSize(work.icon(forFile: url.path))
-        
         menuItem.action = .changeFolder
         menuItem.target = listener
         listener.owner = self

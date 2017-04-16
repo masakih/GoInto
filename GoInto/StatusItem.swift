@@ -26,11 +26,8 @@ extension StatusItem {
     func remove() {
         menuItem.menu?.removeItem(menuItem)
     }
-    
 }
 
 struct SeparatorItem: StatusItem {
-    var menuItem: NSMenuItem {
-        return NSMenuItem.separator()
-    }
+    let menuItem = NSMenuItem.separator()
 }
