@@ -8,8 +8,17 @@
 
 import Cocoa
 
+extension ActionListener {
+    @IBAction func selectType(_ sender: Any?) {
+        guard let owner = owner as? ImageTypeItem,
+            let item = sender as? NSMenuItem,
+            let typeName = item.representedObject as? String
+            else { return }
+        owner.set(typeName)
+    }
+}
 extension Selector {
-    static let selectType = #selector(ImageTypeItem.selectType(_:))
+    static let selectType = #selector(ActionListener.selectType(_:))
 }
 
 private func loadImageTypes() -> [String] {
@@ -22,8 +31,11 @@ private func loadImageTypes() -> [String] {
 class ImageTypeItem: StatusItem {
     let menuItem = NSMenuItem()
     let supportTypes = loadImageTypes()
+    let listener = ActionListener()
     
     init() {
+        listener.owner = self
+        
         menuItem.title = NSLocalizedString("Image Type", comment: "Image Type MenuItem")
         
         let ws = NSWorkspace.shared()
@@ -35,7 +47,7 @@ class ImageTypeItem: StatusItem {
                 let item = NSMenuItem()
                 item.title = ws.localizedDescription(forType: $0) ?? "H O G E"
                 item.action = .selectType
-                item.target = self
+                item.target = listener
                 item.representedObject = ws.preferredFilenameExtension(forType: $0)
                 return item
             }
@@ -72,13 +84,6 @@ class ImageTypeItem: StatusItem {
             task.terminationStatus == 0
             else { return nil }
         return type
-    }
-    
-    @IBAction func selectType(_ sender: Any?) {
-        guard let item = sender as? NSMenuItem,
-            let typeName = item.representedObject as? String
-            else { return }
-        set(typeName)
     }
     
     fileprivate func set(_ typeName: String) {

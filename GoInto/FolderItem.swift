@@ -8,13 +8,20 @@
 
 import Cocoa
 
+extension ActionListener {
+    @IBAction func changeFolder(_ sender: Any?) {
+        guard let owner = owner as? FolderItem else { return }
+        owner.set()
+    }
+}
 extension Selector {
-    static let changeFolder = #selector(FolderItem.changeFolder(_:))
+    static let changeFolder = #selector(ActionListener.changeFolder(_:))
 }
 
 class FolderItem: StatusItem {
     let url: URL
     let menuItem = NSMenuItem()
+    let listener = ActionListener()
     
     init(_ url: URL) {
         self.url = url
@@ -30,15 +37,22 @@ class FolderItem: StatusItem {
         menuItem.image = fitSize(work.icon(forFile: url.path))
         
         menuItem.action = .changeFolder
-        menuItem.target = self
+        menuItem.target = listener
+        listener.owner = self
     }
     
-    @IBAction func changeFolder(_ sender: Any?) {
-        set()
+    @available(macOS, deprecated: 10.12)
+    private func restartUISystemServer() {
+        let task = Process()
+        task.launchPath = "/usr/bin/killall"
+        task.arguments = ["SystemUIServer"]
+        
+        task.launch()
     }
     
     func set() {
-        DispatchQueue(label: "Launch defaults").async {
+        DispatchQueue(label: "Launch defaults").async { [weak self] in
+            guard let `self` = self else { return }
             let location = self.url.path
             let task = Process()
             task.launchPath = "/usr/bin/defaults"
@@ -51,6 +65,11 @@ class FolderItem: StatusItem {
                 else {
                     print("Can not set location")
                     return
+            }
+            if #available(macOS 10.12, *) {
+                return
+            } else {
+                self.restartUISystemServer()
             }
         }
     }
