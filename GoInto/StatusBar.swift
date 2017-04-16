@@ -36,7 +36,11 @@ final class StatusBar: NSObject {
         
         items.reversed().forEach { $0.enter(menu) }
         
-        let _ = currentLocation().map { folderItem(for: $0) }
+        let currentLocation = Screenshot.shared.location
+        if currentLocation != picturesURL(),
+            currentLocation != desktopURL() {
+            let _ = folderItem(for: currentLocation)
+        }
     }
     
     private func folderItem(for url: URL) -> FolderItem {
@@ -63,7 +67,7 @@ final class StatusBar: NSObject {
 
 extension StatusBar: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
-        let url = currentLocation() ?? desktopURL()
+        let url = Screenshot.shared.location
         items
             .flatMap { $0 as? FolderItem }
             .forEach { $0.update(url) }
@@ -73,24 +77,6 @@ extension StatusBar: NSMenuDelegate {
     }
 }
 
-func currentLocation() -> URL? {
-    let task = Process()
-    task.launchPath = "/usr/bin/defaults"
-    task.arguments = ["read", "com.apple.screencapture", "location"]
-    
-    let pipe = Pipe()
-    task.standardOutput = pipe
-    
-    task.launch()
-    task.waitUntilExit()
-    
-    let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    guard let output = String(data: data, encoding: .utf8),
-        let directory = output.components(separatedBy: "\n").first,
-        task.terminationStatus == 0
-        else { return nil }
-    return URL(fileURLWithPath: directory)
-}
 
 fileprivate func picturesURL() -> URL {
     return FileManager
@@ -99,7 +85,7 @@ fileprivate func picturesURL() -> URL {
               in: .userDomainMask).last ?? URL(fileURLWithPath: NSHomeDirectory())
 }
 
-fileprivate func desktopURL() -> URL {
+func desktopURL() -> URL {
     return FileManager
         .default
         .urls(for: .desktopDirectory,

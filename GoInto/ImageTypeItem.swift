@@ -52,11 +52,10 @@ class ImageTypeItem: StatusItem {
                 return item
             }
             .forEach { menuItem.submenu?.addItem($0) }
-        
     }
     
     func update() {
-        let current = currentType() ?? "jpeg"
+        let current = Screenshot.shared.type
         menuItem.submenu?.items.forEach {
             if let type = $0.representedObject as? String,
                 type == current {
@@ -67,39 +66,9 @@ class ImageTypeItem: StatusItem {
         }
     }
     
-    func currentType() -> String? {
-        let task = Process()
-        task.launchPath = "/usr/bin/defaults"
-        task.arguments = ["read", "com.apple.screencapture", "type"]
-        
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        
-        task.launch()
-        task.waitUntilExit()
-        
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        guard let output = String(data: data, encoding: .utf8),
-            let type = output.components(separatedBy: "\n").first,
-            task.terminationStatus == 0
-            else { return nil }
-        return type
-    }
-    
     fileprivate func set(_ typeName: String) {
         DispatchQueue(label: "Launch defaults").async {
-            let task = Process()
-            task.launchPath = "/usr/bin/defaults"
-            task.arguments = ["write", "com.apple.screencapture", "type", typeName]
-            
-            task.launch()
-            task.waitUntilExit()
-            
-            guard task.terminationStatus == 0
-                else {
-                    print("Can not set type")
-                    return
-            }
+            Screenshot.shared.type = typeName
         }
     }
 }

@@ -41,35 +41,14 @@ class FolderItem: StatusItem {
         listener.owner = self
     }
     
-    @available(macOS, deprecated: 10.12)
-    private func restartUISystemServer() {
-        let task = Process()
-        task.launchPath = "/usr/bin/killall"
-        task.arguments = ["SystemUIServer"]
-        
-        task.launch()
-    }
-    
     func set() {
-        DispatchQueue(label: "Launch defaults").async { [weak self] in
-            guard let `self` = self else { return }
-            let location = self.url.path
-            let task = Process()
-            task.launchPath = "/usr/bin/defaults"
-            task.arguments = ["write", "com.apple.screencapture", "location", location]
-            
-            task.launch()
-            task.waitUntilExit()
-            
-            guard task.terminationStatus == 0
-                else {
-                    print("Can not set location")
-                    return
-            }
+        let newUrl = url
+        DispatchQueue(label: "Launch defaults").async {
+            Screenshot.shared.location = newUrl
             if #available(macOS 10.12, *) {
                 return
             } else {
-                self.restartUISystemServer()
+                Screenshot.shared.apply()
             }
         }
     }
