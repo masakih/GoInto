@@ -8,7 +8,6 @@
 
 import Cocoa
 
-
 final class StatusBar: NSObject {
     let myStatusBar = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     let menu = NSMenu()
@@ -37,24 +36,12 @@ final class StatusBar: NSObject {
         items.reversed().forEach { $0.enter(menu) }
         
         let currentLocation = Screenshot.shared.location
-        if currentLocation != picturesURL(),
-            currentLocation != desktopURL() {
-            let _ = folderItem(for: currentLocation)
-        }
-    }
-    
-    private func folderItem(for url: URL) -> FolderItem {
-        if let item = items
+        if items
             .flatMap({ $0 as? FolderItem })
-            .filter({ $0.url == url })
-            .first {
-            return item
+            .filter({ $0.url == currentLocation })
+            .isEmpty {
+            appendFolder(currentLocation)
         }
-        let new = FolderItem(url)
-        new.enter(menu)
-        new.menuItem.state = NSOnState
-        items.append(new)
-        return new
     }
     
     private func appendFolder(_ url: URL) {
