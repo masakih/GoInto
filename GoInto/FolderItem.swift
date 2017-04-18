@@ -28,7 +28,7 @@ class FolderItem: StatusItem {
         
         if let either = try? url.resourceValues(forKeys: [.localizedNameKey]),
             let name = either.localizedName {
-             menuItem.title = name
+            menuItem.title = name
         } else {
             menuItem.title = FileManager.default.displayName(atPath: url.path)
         }
@@ -53,11 +53,7 @@ class FolderItem: StatusItem {
     }
     
     func update(_ url: URL) {
-        if self.url == url {
-            menuItem.state = NSOnState
-        } else {
-            menuItem.state = NSOffState
-        }
+        menuItem.state = (self.url == url ? NSOnState : NSOffState)
     }
 }
 

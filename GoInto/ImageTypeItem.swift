@@ -45,7 +45,7 @@ class ImageTypeItem: StatusItem {
             .filter { ws.localizedDescription(forType: $0) != nil }
             .map {
                 let item = NSMenuItem()
-                item.title = ws.localizedDescription(forType: $0) ?? "H O G E"
+                item.title = ws.localizedDescription(forType: $0) ?? "Never Use Default Value"
                 item.action = .selectType
                 item.target = listener
                 item.representedObject = ws.preferredFilenameExtension(forType: $0)
