@@ -39,6 +39,9 @@ class FolderItem: StatusItem {
         menuItem.target = listener
         listener.owner = self
     }
+    deinit {
+        remove()
+    }
     
     func set() {
         let newUrl = url
@@ -66,4 +69,10 @@ func fitSize(_ image: NSImage) -> NSImage {
     image.resizingMode = .stretch
     image.size = newSize
     return image
+}
+
+extension FolderItem: Equatable {
+    static func ==(lhs: FolderItem, rhs: FolderItem) -> Bool {
+        return lhs.url == rhs.url
+    }
 }

@@ -12,6 +12,7 @@ final class StatusBar: NSObject {
     let myStatusBar = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     let menu = NSMenu()
     var items: [StatusItem] = []
+    let recentItems = LimitedArray<FolderItem>(3)
     
     override init() {
         super.init()
@@ -48,7 +49,7 @@ final class StatusBar: NSObject {
         let newItem = FolderItem(url)
         newItem.enter(menu)
         newItem.set()
-        items.append(newItem)
+        recentItems.append(newItem)
     }
 }
 
@@ -58,6 +59,7 @@ extension StatusBar: NSMenuDelegate {
         items
             .flatMap { $0 as? FolderItem }
             .forEach { $0.update(url) }
+        recentItems.forEach { $0.update(url) }
         items
             .flatMap { $0 as? ImageTypeItem }
             .forEach { $0.update() }
