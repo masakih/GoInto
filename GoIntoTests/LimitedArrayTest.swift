@@ -14,22 +14,22 @@ class LimitedArrayTest: XCTestCase {
 
     func testExample() {
         let limited = LimitedArray<Int>(3)
-        XCTAssertEqual(limited.map({$0}), [])
+        XCTAssertEqual(limited.array, [])
         
         limited.append(1)
-        XCTAssertEqual(limited.map({$0}), [1])
+        XCTAssertEqual(limited.array, [1])
         limited.append(2)
-        XCTAssertEqual(limited.map({$0}), [2, 1])
+        XCTAssertEqual(limited.array, [2, 1])
         limited.append(3)
-        XCTAssertEqual(limited.map({$0}), [3, 2, 1])
+        XCTAssertEqual(limited.array, [3, 2, 1])
         
         // push out
         limited.append(4)
-        XCTAssertEqual(limited.map({$0}), [4, 3, 2])
+        XCTAssertEqual(limited.array, [4, 3, 2])
         
         // replace
         limited.append(3)
-        XCTAssertEqual(limited.map({$0}), [3, 4, 2])
+        XCTAssertEqual(limited.array, [3, 4, 2])
     }
 
 }
