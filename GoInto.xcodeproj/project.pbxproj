@@ -22,7 +22,7 @@
 		F47B07101EA10A1A006711D9 /* FolderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B070F1EA10A1A006711D9 /* FolderItem.swift */; };
 		F47B07121EA10A3E006711D9 /* ChooseFolerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B07111EA10A3E006711D9 /* ChooseFolerItem.swift */; };
 		F47B07181EA10A88006711D9 /* QuitItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B07171EA10A88006711D9 /* QuitItem.swift */; };
-		F4D346941EA644170031AFB3 /* LimitedQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D346931EA644170031AFB3 /* LimitedQueue.swift */; };
+		F4D346941EA644170031AFB3 /* LimitedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D346931EA644170031AFB3 /* LimitedArray.swift */; };
 		F4DBE9281EA7864B00CEB984 /* LimitedArrayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DBE9271EA7864B00CEB984 /* LimitedArrayTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +58,7 @@
 		F47B070F1EA10A1A006711D9 /* FolderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderItem.swift; sourceTree = "<group>"; };
 		F47B07111EA10A3E006711D9 /* ChooseFolerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFolerItem.swift; sourceTree = "<group>"; };
 		F47B07171EA10A88006711D9 /* QuitItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuitItem.swift; sourceTree = "<group>"; };
-		F4D346931EA644170031AFB3 /* LimitedQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedQueue.swift; sourceTree = "<group>"; };
+		F4D346931EA644170031AFB3 /* LimitedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedArray.swift; sourceTree = "<group>"; };
 		F4DBE9271EA7864B00CEB984 /* LimitedArrayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedArrayTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,7 +111,7 @@
 				F40EB6C71EA1CD7A00FEE444 /* ImageTypeItem.swift */,
 				F47B07171EA10A88006711D9 /* QuitItem.swift */,
 				F40EB6CF1EA26BEC00FEE444 /* ActionListener.swift */,
-				F4D346931EA644170031AFB3 /* LimitedQueue.swift */,
+				F4D346931EA644170031AFB3 /* LimitedArray.swift */,
 				F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */,
 				F47B06F31E9A5DF9006711D9 /* Info.plist */,
 				F40EB6C91EA1D7B500FEE444 /* ImageType.plist */,
@@ -246,7 +246,7 @@
 				F47B07181EA10A88006711D9 /* QuitItem.swift in Sources */,
 				F40EB6C81EA1CD7A00FEE444 /* ImageTypeItem.swift in Sources */,
 				F47B070E1E9A6E55006711D9 /* StatusBar.swift in Sources */,
-				F4D346941EA644170031AFB3 /* LimitedQueue.swift in Sources */,
+				F4D346941EA644170031AFB3 /* LimitedArray.swift in Sources */,
 				F47B07121EA10A3E006711D9 /* ChooseFolerItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

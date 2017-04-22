@@ -11,7 +11,7 @@ import Foundation
 class LimitedArray<Element: Equatable>: Collection {
     
     private(set) var array: [Element] = []
-    private let size: Int
+    let size: Int
     
     init(_ size: Int) {
         self.size = size
