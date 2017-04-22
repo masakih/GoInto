@@ -1,5 +1,5 @@
 //
-//  ChooseFolerItem.swift
+//  ChooseFolderItem.swift
 //  GoInto
 //
 //  Created by Hori,Masaki on 2017/04/14.
@@ -10,7 +10,7 @@ import Cocoa
 
 extension ActionListener {
     @IBAction func selectFolder(_ sender: Any?) {
-        guard let owner = owner as? ChooseFolerItem else { return }
+        guard let owner = owner as? ChooseFolderItem else { return }
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
@@ -29,7 +29,7 @@ extension Selector {
     static let selectFolder = #selector(ActionListener.selectFolder(_:))
 }
 
-class ChooseFolerItem: StatusItem {
+class ChooseFolderItem: StatusItem {
     let menuItem = NSMenuItem()
     let urlSelector: (URL) -> Void
     let listener = ActionListener()

@@ -28,7 +28,7 @@ final class StatusBar: NSObject {
         items.append(FolderItem(desktopURL()))
         items.append(FolderItem(picturesURL()))
         items.append(SeparatorItem())
-        items.append(ChooseFolerItem(appendFolder))
+        items.append(ChooseFolderItem(appendFolder))
         items.append(SeparatorItem())
         items.append(ImageTypeItem())
         items.append(SeparatorItem())
