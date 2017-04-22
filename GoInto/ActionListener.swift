@@ -11,7 +11,7 @@ import Cocoa
 /// El Capitan以前はaction targetがNSObjectを継承していなければならないため、targetとして利用する
 ///
 /// extension ActionListener {
-///     func action(_ sender: Any?) {
+///     @IBAction func action(_ sender: Any?) {
 ///         guard let owner = owner as? Responder? else { return }
 ///         owner.operate()
 ///     }
@@ -24,6 +24,10 @@ import Cocoa
 ///     init() {
 ///         actionSender.action = #selector(ActionListener.action(_:))
 ///         actionSender.target = listener
+///         listener.owner = self
+///     }
+///     func operate() {
+///         // do something
 ///     }
 /// }
 class ActionListener: NSObject {
