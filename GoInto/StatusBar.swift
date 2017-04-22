@@ -11,8 +11,8 @@ import Cocoa
 final class StatusBar: NSObject {
     let myStatusBar = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     let menu = NSMenu()
-    var items: [StatusItem] = []
-    let recentItems = LimitedArray<FolderItem>(3)
+    private(set) var items: [StatusItem] = []
+    private(set) var recentItems = LimitedArray<FolderItem>(3)
     
     override init() {
         super.init()

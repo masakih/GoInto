@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LimitedArray<Element: Equatable>: Collection {
+struct LimitedArray<Element: Equatable>: Collection {
     
     private(set) var array: [Element] = []
     let size: Int
@@ -16,7 +16,7 @@ class LimitedArray<Element: Equatable>: Collection {
     init(_ size: Int) {
         self.size = size
     }
-    func append(_ newObject: Element) {
+    mutating func append(_ newObject: Element) {
         if let index = array.index(of: newObject) {
             array.remove(at: index)
         }

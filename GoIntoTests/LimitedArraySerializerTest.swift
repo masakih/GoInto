@@ -1,5 +1,5 @@
 //
-//  CollectionSerializerTest.swift
+//  LimitedArraySerializerTest.swift
 //  GoInto
 //
 //  Created by Hori,Masaki on 2017/04/21.
@@ -11,10 +11,10 @@ import XCTest
 @testable import GoInto
 
 
-class CollectionSerializerTest: XCTestCase {
+class LimitedArraySerializerTest: XCTestCase {
 
     func testExample() {
-        let limited = LimitedArray<Int>(3)
+        var limited = LimitedArray<Int>(3)
         limited.append(1)
         limited.append(2)
         limited.append(3)
@@ -28,7 +28,7 @@ class CollectionSerializerTest: XCTestCase {
     }
     
     func testURL() {
-        let limited = LimitedArray<URL>(3)
+        var limited = LimitedArray<URL>(3)
         limited.append(URL(fileURLWithPath: "/System/"))
         limited.append(URL(fileURLWithPath: "/Users/"))
         limited.append(URL(fileURLWithPath: "/var/"))
@@ -42,7 +42,7 @@ class CollectionSerializerTest: XCTestCase {
     }
     
     func testSize() {
-        let limited = LimitedArray<URL>(5)
+        var limited = LimitedArray<URL>(5)
         limited.append(URL(fileURLWithPath: "/System/"))
         limited.append(URL(fileURLWithPath: "/Users/"))
         limited.append(URL(fileURLWithPath: "/var/"))

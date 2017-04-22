@@ -43,8 +43,8 @@ class LimitedArraySerializer {
     class func deserialize<Element>(_ data: Data) -> LimitedArray<Element>? {
         guard let wrapper = NSKeyedUnarchiver.unarchiveObject(with: data) as? LimitedArrayWrapper<Element>
             else { return nil }
-        let limited = LimitedArray<Element>(wrapper.size)
-        wrapper.array.reversed().forEach(limited.append)
+        var limited = LimitedArray<Element>(wrapper.size)
+        wrapper.array.reversed().forEach { limited.append($0) }
         return limited
     }
 }

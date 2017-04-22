@@ -13,7 +13,7 @@ import XCTest
 class LimitedArrayTest: XCTestCase {
 
     func testExample() {
-        let limited = LimitedArray<Int>(3)
+        var limited = LimitedArray<Int>(3)
         XCTAssertEqual(limited.array, [])
         
         limited.append(1)
