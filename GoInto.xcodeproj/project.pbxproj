@@ -13,6 +13,8 @@
 		F40EB6CA1EA1D7B500FEE444 /* ImageType.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40EB6C91EA1D7B500FEE444 /* ImageType.plist */; };
 		F40EB6D01EA26BEC00FEE444 /* ActionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40EB6CF1EA26BEC00FEE444 /* ActionListener.swift */; };
 		F40EB6D21EA2F28100FEE444 /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40EB6D11EA2F28100FEE444 /* Screenshot.swift */; };
+		F463F6D91EAA3B8F00FAB2E3 /* CollectionSerializerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463F6D81EAA3B8F00FAB2E3 /* CollectionSerializerTest.swift */; };
+		F463F6DB1EAA3C9700FAB2E3 /* LimitedArraySerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463F6DA1EAA3C9700FAB2E3 /* LimitedArraySerializer.swift */; };
 		F47B06EB1E9A5DF9006711D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */; };
 		F47B06EF1E9A5DF9006711D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */; };
 		F47B06FD1E9A5DF9006711D9 /* GoIntoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B06FC1E9A5DF9006711D9 /* GoIntoTests.swift */; };
@@ -45,6 +47,8 @@
 		F40EB6C91EA1D7B500FEE444 /* ImageType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImageType.plist; sourceTree = "<group>"; };
 		F40EB6CF1EA26BEC00FEE444 /* ActionListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionListener.swift; sourceTree = "<group>"; };
 		F40EB6D11EA2F28100FEE444 /* Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screenshot.swift; sourceTree = "<group>"; };
+		F463F6D81EAA3B8F00FAB2E3 /* CollectionSerializerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionSerializerTest.swift; sourceTree = "<group>"; };
+		F463F6DA1EAA3C9700FAB2E3 /* LimitedArraySerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedArraySerializer.swift; sourceTree = "<group>"; };
 		F47B06E71E9A5DF9006711D9 /* GoInto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoInto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 				F47B07171EA10A88006711D9 /* QuitItem.swift */,
 				F40EB6CF1EA26BEC00FEE444 /* ActionListener.swift */,
 				F4D346931EA644170031AFB3 /* LimitedArray.swift */,
+				F463F6DA1EAA3C9700FAB2E3 /* LimitedArraySerializer.swift */,
 				F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */,
 				F47B06F31E9A5DF9006711D9 /* Info.plist */,
 				F40EB6C91EA1D7B500FEE444 /* ImageType.plist */,
@@ -126,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				F4DBE9271EA7864B00CEB984 /* LimitedArrayTest.swift */,
+				F463F6D81EAA3B8F00FAB2E3 /* CollectionSerializerTest.swift */,
 				F47B06FC1E9A5DF9006711D9 /* GoIntoTests.swift */,
 				F47B06FE1E9A5DF9006711D9 /* Info.plist */,
 			);
@@ -246,6 +252,7 @@
 				F47B07181EA10A88006711D9 /* QuitItem.swift in Sources */,
 				F40EB6C81EA1CD7A00FEE444 /* ImageTypeItem.swift in Sources */,
 				F47B070E1E9A6E55006711D9 /* StatusBar.swift in Sources */,
+				F463F6DB1EAA3C9700FAB2E3 /* LimitedArraySerializer.swift in Sources */,
 				F4D346941EA644170031AFB3 /* LimitedArray.swift in Sources */,
 				F47B07121EA10A3E006711D9 /* ChooseFolerItem.swift in Sources */,
 			);
@@ -256,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4DBE9281EA7864B00CEB984 /* LimitedArrayTest.swift in Sources */,
+				F463F6D91EAA3B8F00FAB2E3 /* CollectionSerializerTest.swift in Sources */,
 				F47B06FD1E9A5DF9006711D9 /* GoIntoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
