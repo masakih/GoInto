@@ -8,6 +8,13 @@
 
 import Foundation
 
+protocol SerializerProvider {
+    var serializer: Serializer { get }
+}
+protocol Serializer {
+    var original: SerializerProvider? { get }
+}
+
 private struct LimitedArrayWrapperCodingKey {
     static let array = "LimitedArrayWrapperCodingKey.Array"
     static let size = "LimitedArrayWrapperCodingKey.Size"
@@ -22,13 +29,24 @@ private class LimitedArrayWrapper<Element: Equatable>: NSObject, NSCoding {
         size = limited.size
     }
     required init?(coder aDecoder: NSCoder) {
-        guard let array = aDecoder.decodeObject(forKey: LimitedArrayWrapperCodingKey.array) as? [Element]
-            else { return nil }
-        self.array = array
+        let array = aDecoder.decodeObject(forKey: LimitedArrayWrapperCodingKey.array)
+        switch array {
+        case let elements as [Element]:
+            self.array = elements
+        case let serialized as [Serializer]:
+            self.array = serialized.flatMap { $0.original as? Element }
+        default:
+            return nil
+        }
         size = aDecoder.decodeInteger(forKey: LimitedArrayWrapperCodingKey.size)
     }
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(array, forKey: LimitedArrayWrapperCodingKey.array)
+        if let serializable = array as? [SerializerProvider] {
+            let storeArray = serializable.map { $0.serializer }
+            aCoder.encode(storeArray, forKey: LimitedArrayWrapperCodingKey.array)
+        } else {
+            aCoder.encode(array, forKey: LimitedArrayWrapperCodingKey.array)
+        }
         aCoder.encode(size, forKey: LimitedArrayWrapperCodingKey.size)
     }
 }

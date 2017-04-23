@@ -13,7 +13,7 @@ import XCTest
 
 class LimitedArraySerializerTest: XCTestCase {
 
-    func testExample() {
+    func testInt() {
         var limited = LimitedArray<Int>(3)
         limited.append(1)
         limited.append(2)
@@ -40,6 +40,19 @@ class LimitedArraySerializerTest: XCTestCase {
         XCTAssertEqual(object.array, limited.array)
         XCTAssertEqual(object.size, limited.size)
     }
+    func testFolderItem() {
+        var limited = LimitedArray<FolderItem>(3)
+        limited.append(FolderItem(URL(fileURLWithPath: "/System/")))
+        limited.append(FolderItem(URL(fileURLWithPath: "/Users/")))
+        limited.append(FolderItem(URL(fileURLWithPath: "/var/")))
+        
+        let data = LimitedArraySerializer.seirialize(limited)
+        XCTAssertNotNil(data)
+        let object: LimitedArray<FolderItem> = LimitedArraySerializer.deserialize(data) ?? LimitedArray<FolderItem>(3)
+        
+        XCTAssertEqual(object.array, limited.array)
+        XCTAssertEqual(object.size, limited.size)
+    }
     
     func testSize() {
         var limited = LimitedArray<URL>(5)
@@ -54,5 +67,4 @@ class LimitedArraySerializerTest: XCTestCase {
         XCTAssertEqual(object.array, limited.array)
         XCTAssertEqual(object.size, limited.size)
     }
-
 }

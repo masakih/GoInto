@@ -18,7 +18,7 @@ extension Selector {
     static let changeFolder = #selector(ActionListener.changeFolder(_:))
 }
 
-class FolderItem: StatusItem {
+final class FolderItem: StatusItem {
     let url: URL
     let menuItem = NSMenuItem()
     let listener = ActionListener()
