@@ -11,20 +11,29 @@ import XCTest
 @testable import GoInto
 
 class UserDefaultsTest: XCTestCase {
+    var originalURLs: [URL]? = []
+    
+    override func setUp() {
+        super.setUp()
+        originalURLs = UserDefaults.standard.recentURLs
+    }
+    
+    override func tearDown() {
+        UserDefaults.standard.recentURLs = originalURLs
+        super.tearDown()
+    }
     
     func testRecentFolders() {
-        var limited = LimitedArray<FolderItem>(3)
-        limited.append(FolderItem(URL(fileURLWithPath: "/System/")))
-        limited.append(FolderItem(URL(fileURLWithPath: "/Users/")))
-        limited.append(FolderItem(URL(fileURLWithPath: "/var/")))
+        let urls = [URL(fileURLWithPath: "/System/"),
+                    URL(fileURLWithPath: "/Users/"),
+                    URL(fileURLWithPath: "/var/")]
         
-        UserDefaults.standard.recentFolders = limited
+        UserDefaults.standard.recentURLs = urls
         
-        let storedData = UserDefaults.standard.recentFolders
+        let storedData = UserDefaults.standard.recentURLs
         XCTAssertNotNil(storedData)
         guard let stored = storedData else { return }
         
-        XCTAssertEqual(limited.array, stored.array)
-        XCTAssertEqual(limited.size, stored.size)
+        XCTAssertEqual(urls, stored)
     }
 }

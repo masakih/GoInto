@@ -12,7 +12,7 @@ final class StatusBar: NSObject {
     let myStatusBar = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     let menu = NSMenu()
     private(set) var items: [StatusItem] = []
-    private(set) var recentItems = LimitedArray<FolderItem>(3)
+    private(set) var recentItems = LimitedArray<FolderItem>(5)
     
     override init() {
         super.init()
@@ -36,6 +36,8 @@ final class StatusBar: NSObject {
         
         items.reversed().forEach { $0.enter(menu) }
         
+        UserDefaults.standard.recentURLs?.forEach(appendFolder)
+        
         let currentLocation = Screenshot.shared.location
         if items
             .flatMap({ $0 as? FolderItem })
@@ -50,6 +52,8 @@ final class StatusBar: NSObject {
         newItem.enter(menu)
         newItem.set()
         recentItems.append(newItem)
+        
+        UserDefaults.standard.recentURLs = recentItems.map { $0.url }
     }
 }
 

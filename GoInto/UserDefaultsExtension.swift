@@ -9,16 +9,23 @@
 import Foundation
 
 extension UserDefaults {
-    var recentFolders: LimitedArray<FolderItem>? {
-        get {
-            guard let data = object(forKey: "recentFolders") as? Data,
-                let serialized: LimitedArray<FolderItem> = LimitedArraySerializer.deserialize(data)
-                else { return nil }
-            return serialized
+    func set(archived: Any?, forKey: String) {
+        if let object = archived {
+            let data = NSKeyedArchiver.archivedData(withRootObject: object)
+            set(data, forKey: forKey)
+        } else {
+            set(nil, forKey: forKey)
         }
-        set {
-            let data = newValue.map { LimitedArraySerializer.seirialize($0) }
-            set(data, forKey: "recentFolders")
+    }
+    func unarchiveObject(forKey: String) -> Any? {
+        if let data = object(forKey: forKey) as? Data {
+            return NSKeyedUnarchiver.unarchiveObject(with: data)
         }
+        return nil
+    }
+    
+    var recentURLs: [URL]? {
+        get { return unarchiveObject(forKey: "recentURLs") as? [URL] }
+        set { set(archived: newValue, forKey: "recentURLs") }
     }
 }
