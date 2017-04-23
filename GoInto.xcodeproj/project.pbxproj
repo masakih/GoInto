@@ -13,7 +13,9 @@
 		F40EB6CA1EA1D7B500FEE444 /* ImageType.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40EB6C91EA1D7B500FEE444 /* ImageType.plist */; };
 		F40EB6D01EA26BEC00FEE444 /* ActionListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40EB6CF1EA26BEC00FEE444 /* ActionListener.swift */; };
 		F40EB6D21EA2F28100FEE444 /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40EB6D11EA2F28100FEE444 /* Screenshot.swift */; };
+		F414DD031EABAB7300111DA7 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414DD021EABAB7300111DA7 /* UserDefaultsExtension.swift */; };
 		F414DD051EAC12D500111DA7 /* FolderItemSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414DD041EAC12D500111DA7 /* FolderItemSerializer.swift */; };
+		F414DD071EAC43E500111DA7 /* UserDefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414DD061EAC43E500111DA7 /* UserDefaultsTest.swift */; };
 		F463F6D91EAA3B8F00FAB2E3 /* LimitedArraySerializerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463F6D81EAA3B8F00FAB2E3 /* LimitedArraySerializerTest.swift */; };
 		F463F6DB1EAA3C9700FAB2E3 /* LimitedArraySerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F463F6DA1EAA3C9700FAB2E3 /* LimitedArraySerializer.swift */; };
 		F47B06EB1E9A5DF9006711D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */; };
@@ -48,7 +50,9 @@
 		F40EB6C91EA1D7B500FEE444 /* ImageType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImageType.plist; sourceTree = "<group>"; };
 		F40EB6CF1EA26BEC00FEE444 /* ActionListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionListener.swift; sourceTree = "<group>"; };
 		F40EB6D11EA2F28100FEE444 /* Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screenshot.swift; sourceTree = "<group>"; };
+		F414DD021EABAB7300111DA7 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		F414DD041EAC12D500111DA7 /* FolderItemSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderItemSerializer.swift; sourceTree = "<group>"; };
+		F414DD061EAC43E500111DA7 /* UserDefaultsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTest.swift; sourceTree = "<group>"; };
 		F463F6D81EAA3B8F00FAB2E3 /* LimitedArraySerializerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedArraySerializerTest.swift; sourceTree = "<group>"; };
 		F463F6DA1EAA3C9700FAB2E3 /* LimitedArraySerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedArraySerializer.swift; sourceTree = "<group>"; };
 		F47B06E71E9A5DF9006711D9 /* GoInto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoInto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +113,7 @@
 			children = (
 				F47B07071E9A6071006711D9 /* MainMenu.xib */,
 				F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */,
+				F414DD021EABAB7300111DA7 /* UserDefaultsExtension.swift */,
 				F40EB6D11EA2F28100FEE444 /* Screenshot.swift */,
 				F47B070D1E9A6E55006711D9 /* StatusBar.swift */,
 				F47B070B1E9A65FA006711D9 /* StatusItem.swift */,
@@ -135,6 +140,7 @@
 			children = (
 				F4DBE9271EA7864B00CEB984 /* LimitedArrayTest.swift */,
 				F463F6D81EAA3B8F00FAB2E3 /* LimitedArraySerializerTest.swift */,
+				F414DD061EAC43E500111DA7 /* UserDefaultsTest.swift */,
 				F47B06FC1E9A5DF9006711D9 /* GoIntoTests.swift */,
 				F47B06FE1E9A5DF9006711D9 /* Info.plist */,
 			);
@@ -257,6 +263,7 @@
 				F47B070E1E9A6E55006711D9 /* StatusBar.swift in Sources */,
 				F463F6DB1EAA3C9700FAB2E3 /* LimitedArraySerializer.swift in Sources */,
 				F4D346941EA644170031AFB3 /* LimitedArray.swift in Sources */,
+				F414DD031EABAB7300111DA7 /* UserDefaultsExtension.swift in Sources */,
 				F47B07121EA10A3E006711D9 /* ChooseFolderItem.swift in Sources */,
 				F414DD051EAC12D500111DA7 /* FolderItemSerializer.swift in Sources */,
 			);
@@ -266,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F414DD071EAC43E500111DA7 /* UserDefaultsTest.swift in Sources */,
 				F4DBE9281EA7864B00CEB984 /* LimitedArrayTest.swift in Sources */,
 				F463F6D91EAA3B8F00FAB2E3 /* LimitedArraySerializerTest.swift in Sources */,
 				F47B06FD1E9A5DF9006711D9 /* GoIntoTests.swift in Sources */,
