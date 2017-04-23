@@ -10,7 +10,6 @@ import Foundation
 
 final class FolderItemSerializer: NSObject, NSCoding {
     fileprivate let url: URL
-    var folderItem: FolderItem { return FolderItem(url) }
     
     init(_ url: URL) {
         self.url = url
