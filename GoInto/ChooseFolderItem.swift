@@ -32,7 +32,7 @@ extension Selector {
 class ChooseFolderItem: StatusItem {
     let menuItem = NSMenuItem()
     let urlSelector: (URL) -> Void
-    let listener = ActionListener()
+    private let listener = ActionListener()
     
     init(_ handler: @escaping ((URL) -> Void)) {
         urlSelector = handler

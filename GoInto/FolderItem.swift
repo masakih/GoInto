@@ -21,7 +21,7 @@ extension Selector {
 final class FolderItem: StatusItem {
     let url: URL
     let menuItem = NSMenuItem()
-    let listener = ActionListener()
+    private let listener = ActionListener()
     
     init(_ url: URL) {
         self.url = url

@@ -30,8 +30,8 @@ private func loadImageTypes() -> [String] {
 
 class ImageTypeItem: StatusItem {
     let menuItem = NSMenuItem()
-    let supportTypes = loadImageTypes()
-    let listener = ActionListener()
+    private let supportTypes = loadImageTypes()
+    private let listener = ActionListener()
     
     init() {
         listener.owner = self

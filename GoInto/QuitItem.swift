@@ -20,7 +20,7 @@ extension Selector {
 
 class QuitItem: StatusItem {
     let menuItem = NSMenuItem()
-    let listener = ActionListener()
+    private let listener = ActionListener()
     
     init() {
         let format = NSLocalizedString("Quit %@", comment: "Quit Menu Item")
