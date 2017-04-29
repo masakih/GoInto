@@ -12,7 +12,9 @@ final class StatusBar: NSObject {
     let myStatusBar = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     let menu = NSMenu()
     private(set) var items: [StatusItem] = []
-    private(set) var recentItems = LimitedArray<FolderItem>(5)
+    private(set) var recentItems = LimitedArray<FolderItem>(5) {
+        didSet { UserDefaults.standard.recentURLs = recentItems.map { $0.url } }
+    }
     
     override init() {
         super.init()
@@ -38,22 +40,14 @@ final class StatusBar: NSObject {
         
         UserDefaults.standard.recentURLs?.forEach(appendFolder)
         
-        let currentLocation = Screenshot.shared.location
-        if items
-            .flatMap({ $0 as? FolderItem })
-            .filter({ $0.url == currentLocation })
-            .isEmpty {
-            appendFolder(currentLocation)
-        }
+        appendFolder(Screenshot.shared.location)
     }
     
     private func appendFolder(_ url: URL) {
         let newItem = FolderItem(url)
+        recentItems.append(newItem)
         newItem.enter(menu)
         newItem.set()
-        recentItems.append(newItem)
-        
-        UserDefaults.standard.recentURLs = recentItems.map { $0.url }
     }
 }
 
