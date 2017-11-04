@@ -30,7 +30,7 @@ final class FolderItem: StatusItem {
             menuItem.title = FileManager.default.displayName(atPath: url.path)
         }
         
-        let work = NSWorkspace.shared()
+        let work = NSWorkspace.shared
         menuItem.image = fitSize(work.icon(forFile: url.path))
         menuItem.action = #selector(ActionListener.changeFolder(_:))
         menuItem.target = listener
@@ -53,7 +53,7 @@ final class FolderItem: StatusItem {
     }
     
     func update(_ url: URL) {
-        menuItem.state = (self.url == url ? NSOnState : NSOffState)
+        menuItem.state = (self.url == url ? .on : .off)
     }
 }
 

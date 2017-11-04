@@ -9,7 +9,7 @@
 import Cocoa
 
 final class StatusBar: NSObject {
-    let myStatusBar = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
+    let myStatusBar = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     let menu = NSMenu()
     private(set) var items: [StatusItem] = []
     private(set) var recentItems = LimitedArray<FolderItem>(5) {

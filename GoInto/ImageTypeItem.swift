@@ -35,7 +35,7 @@ class ImageTypeItem: StatusItem {
         
         menuItem.title = NSLocalizedString("Image Type", comment: "Image Type MenuItem")
         
-        let ws = NSWorkspace.shared()
+        let ws = NSWorkspace.shared
         menuItem.submenu = NSMenu()
         
         supportTypes
@@ -56,9 +56,9 @@ class ImageTypeItem: StatusItem {
         menuItem.submenu?.items.forEach {
             if let type = $0.representedObject as? String,
                 type == current {
-                $0.state = NSOnState
+                $0.state = .on
             } else {
-                $0.state = NSOffState
+                $0.state = .off
             }
         }
     }

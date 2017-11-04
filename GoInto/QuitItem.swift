@@ -10,7 +10,7 @@ import Cocoa
 
 extension ActionListener {
     @IBAction func quit(_ sender: Any?) {
-        NSApplication.shared().terminate(nil)
+        NSApplication.shared.terminate(nil)
     }
 }
 
