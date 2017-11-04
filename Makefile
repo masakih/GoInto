@@ -9,7 +9,7 @@ APP_NAME=$(BUILD_PATH)/$(DEPLOYMENT)/$(PRODUCT_NAME)
 SCHEME=GoInto
 INFO_PLIST=GoInto/Info.plist
 
-LOCALIZE_FILES=GoInto/QuitItem.swift GoInto/ChooseFolerItem.swift GoInto/ImageTypeItem.swift
+LOCALIZE_FILES=GoInto/QuitItem.swift GoInto/ChooseFolderItem.swift GoInto/ImageTypeItem.swift
 
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
 VERSION=$(shell $(VER_CMD))
