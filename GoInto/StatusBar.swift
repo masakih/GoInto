@@ -27,14 +27,16 @@ final class StatusBar: NSObject {
     }
     
     private func build() {
-        items.append(FolderItem(desktopURL()))
-        items.append(FolderItem(picturesURL()))
-        items.append(SeparatorItem())
-        items.append(ChooseFolderItem(appendFolder))
-        items.append(SeparatorItem())
-        items.append(ImageTypeItem())
-        items.append(SeparatorItem())
-        items.append(QuitItem())
+        items = [
+            FolderItem(desktopURL()),
+            FolderItem(picturesURL()),
+            SeparatorItem(),
+            ChooseFolderItem(appendFolder),
+            SeparatorItem(),
+            ImageTypeItem(),
+            SeparatorItem(),
+            QuitItem()
+        ]
         
         items.reversed().forEach { $0.enter(menu) }
         
