@@ -17,6 +17,8 @@ class Screenshot {
     
     static let shared = Screenshot()
     
+    private init() {}
+    
     var location: URL {
         get { return screencaptureAttribute(.location).map { URL(fileURLWithPath: $0) } ?? desktopURL() }
         set { setScreencaptureAttribute(newValue.path, for: .location) }
