@@ -14,10 +14,6 @@ extension ActionListener {
     }
 }
 
-extension Selector {
-    static let quit = #selector(ActionListener.quit(_:))
-}
-
 class QuitItem: StatusItem {
     let menuItem = NSMenuItem()
     private let listener = ActionListener()
@@ -25,7 +21,7 @@ class QuitItem: StatusItem {
     init() {
         let format = NSLocalizedString("Quit %@", comment: "Quit Menu Item")
         menuItem.title = String(format: format, AppDelegate.appName)
-        menuItem.action = .quit
+        menuItem.action = #selector(ActionListener.quit(_:))
         menuItem.target = listener
     }
 }

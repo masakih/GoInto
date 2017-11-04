@@ -17,9 +17,6 @@ extension ActionListener {
         owner.set(typeName)
     }
 }
-extension Selector {
-    static let selectType = #selector(ActionListener.selectType(_:))
-}
 
 private func loadImageTypes() -> [String] {
     guard let url = Bundle.main.url(forResource: "ImageType", withExtension: "plist"),
@@ -46,7 +43,7 @@ class ImageTypeItem: StatusItem {
             .map {
                 let item = NSMenuItem()
                 item.title = ws.localizedDescription(forType: $0) ?? "Never Use Default Value"
-                item.action = .selectType
+                item.action = #selector(ActionListener.selectType(_:))
                 item.target = listener
                 item.representedObject = ws.preferredFilenameExtension(forType: $0)
                 return item

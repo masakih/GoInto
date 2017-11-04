@@ -14,9 +14,6 @@ extension ActionListener {
         owner.set()
     }
 }
-extension Selector {
-    static let changeFolder = #selector(ActionListener.changeFolder(_:))
-}
 
 final class FolderItem: StatusItem {
     let url: URL
@@ -35,7 +32,7 @@ final class FolderItem: StatusItem {
         
         let work = NSWorkspace.shared()
         menuItem.image = fitSize(work.icon(forFile: url.path))
-        menuItem.action = .changeFolder
+        menuItem.action = #selector(ActionListener.changeFolder(_:))
         menuItem.target = listener
         listener.owner = self
     }

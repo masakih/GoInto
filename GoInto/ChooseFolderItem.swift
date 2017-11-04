@@ -25,9 +25,6 @@ extension ActionListener {
         owner.urlSelector(url)
     }
 }
-extension Selector {
-    static let selectFolder = #selector(ActionListener.selectFolder(_:))
-}
 
 class ChooseFolderItem: StatusItem {
     let menuItem = NSMenuItem()
@@ -37,7 +34,7 @@ class ChooseFolderItem: StatusItem {
     init(_ handler: @escaping ((URL) -> Void)) {
         urlSelector = handler
         menuItem.title = NSLocalizedString("Choose Folder", comment: "Choose Folder MenuItem")
-        menuItem.action = .selectFolder
+        menuItem.action = #selector(ActionListener.selectFolder(_:))
         menuItem.target = listener
         listener.owner = self
     }
