@@ -31,7 +31,7 @@ final class StatusBar: NSObject {
             FolderItem(desktopURL()),
             FolderItem(picturesURL()),
             SeparatorItem(),
-            ChooseFolderItem(appendFolder),
+            ChooseFolderItem(appendAndChooseFolder),
             SeparatorItem(),
             ImageTypeItem(),
             SeparatorItem(),
@@ -45,11 +45,23 @@ final class StatusBar: NSObject {
         appendFolder(Screenshot.shared.location)
     }
     
-    private func appendFolder(_ url: URL) {
+    private func newFolderItem(_ url: URL) -> FolderItem? {
+        
+        guard url != desktopURL() else { return nil }
+        guard url != picturesURL() else { return nil }
+        
         let newItem = FolderItem(url)
         recentItems.append(newItem)
         newItem.enter(menu)
-        newItem.set()
+        return newItem
+    }
+    
+    private func appendFolder(_ url: URL) {
+        _ = newFolderItem(url)
+    }
+    
+    private func appendAndChooseFolder(_ url: URL) {
+        newFolderItem(url)?.set()
     }
 }
 
