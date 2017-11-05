@@ -20,6 +20,7 @@ extension ActionListener {
         panel.title = NSLocalizedString("Choose Folder", comment: "Choose Folder Open Panel Title")
         panel.message = NSLocalizedString("Choose Folder for Save Screenshot", comment: "Choose Folder Open Panel Message")
         
+        NSApplication.shared.activate(ignoringOtherApps: true)
         guard panel.runModal() == NSApplication.ModalResponse(NSFileHandlingPanelOKButton),
             let url = panel.directoryURL else { return }
         owner.urlSelector(url)
