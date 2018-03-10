@@ -8,16 +8,6 @@
 
 import Cocoa
 
-extension ActionListener {
-    @IBAction func selectType(_ sender: Any?) {
-        guard let owner = owner as? ImageTypeItem,
-            let item = sender as? NSMenuItem,
-            let typeName = item.representedObject as? String
-            else { return }
-        owner.set(typeName)
-    }
-}
-
 private func loadImageTypes() -> [String] {
     guard let url = Bundle.main.url(forResource: "ImageType", withExtension: "plist"),
         let array = NSArray(contentsOf: url)
@@ -28,11 +18,8 @@ private func loadImageTypes() -> [String] {
 class ImageTypeItem: StatusItem {
     let menuItem = NSMenuItem()
     private let supportTypes = loadImageTypes()
-    private let listener = ActionListener()
     
-    init() {
-        listener.owner = self
-        
+    init() {        
         menuItem.title = NSLocalizedString("Image Type", comment: "Image Type MenuItem")
         
         let ws = NSWorkspace.shared
@@ -43,8 +30,8 @@ class ImageTypeItem: StatusItem {
             .map {
                 let item = NSMenuItem()
                 item.title = ws.localizedDescription(forType: $0) ?? "Never Use Default Value"
-                item.action = #selector(ActionListener.selectType(_:))
-                item.target = listener
+                item.action = #selector(selectType(_:))
+                item.target = self
                 item.representedObject = ws.preferredFilenameExtension(forType: $0)
                 return item
             }
@@ -67,5 +54,12 @@ class ImageTypeItem: StatusItem {
         DispatchQueue(label: "Launch defaults").async {
             Screenshot.shared.type = typeName
         }
+    }
+    
+    @IBAction func selectType(_ sender: Any?) {
+        guard let item = sender as? NSMenuItem,
+            let typeName = item.representedObject as? String
+            else { return }
+        set(typeName)
     }
 }

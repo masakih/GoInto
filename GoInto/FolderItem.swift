@@ -8,17 +8,9 @@
 
 import Cocoa
 
-extension ActionListener {
-    @IBAction func changeFolder(_ sender: Any?) {
-        guard let owner = owner as? FolderItem else { return }
-        owner.set()
-    }
-}
-
 final class FolderItem: StatusItem {
     let url: URL
     let menuItem = NSMenuItem()
-    private let listener = ActionListener()
     
     init(_ url: URL) {
         self.url = url
@@ -32,9 +24,8 @@ final class FolderItem: StatusItem {
         
         let work = NSWorkspace.shared
         menuItem.image = fitSize(work.icon(forFile: url.path))
-        menuItem.action = #selector(ActionListener.changeFolder(_:))
-        menuItem.target = listener
-        listener.owner = self
+        menuItem.action = #selector(changeFolder(_:))
+        menuItem.target = self
     }
     deinit {
         remove()
@@ -54,6 +45,10 @@ final class FolderItem: StatusItem {
     
     func update(_ url: URL) {
         menuItem.state = (self.url == url ? .on : .off)
+    }
+    
+    @IBAction func changeFolder(_ sender: Any?) {
+        set()
     }
 }
 

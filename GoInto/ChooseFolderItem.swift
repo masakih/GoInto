@@ -8,9 +8,18 @@
 
 import Cocoa
 
-extension ActionListener {
+class ChooseFolderItem: StatusItem {
+    let menuItem = NSMenuItem()
+    let urlSelector: (URL) -> Void
+    
+    init(_ handler: @escaping ((URL) -> Void)) {
+        urlSelector = handler
+        menuItem.title = NSLocalizedString("Choose Folder", comment: "Choose Folder MenuItem")
+        menuItem.action = #selector(selectFolder(_:))
+        menuItem.target = self
+    }
+    
     @IBAction func selectFolder(_ sender: Any?) {
-        guard let owner = owner as? ChooseFolderItem else { return }
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
@@ -23,20 +32,6 @@ extension ActionListener {
         NSApplication.shared.activate(ignoringOtherApps: true)
         guard panel.runModal() == NSApplication.ModalResponse(NSFileHandlingPanelOKButton),
             let url = panel.directoryURL else { return }
-        owner.urlSelector(url)
-    }
-}
-
-class ChooseFolderItem: StatusItem {
-    let menuItem = NSMenuItem()
-    let urlSelector: (URL) -> Void
-    private let listener = ActionListener()
-    
-    init(_ handler: @escaping ((URL) -> Void)) {
-        urlSelector = handler
-        menuItem.title = NSLocalizedString("Choose Folder", comment: "Choose Folder MenuItem")
-        menuItem.action = #selector(ActionListener.selectFolder(_:))
-        menuItem.target = listener
-        listener.owner = self
+        urlSelector(url)
     }
 }

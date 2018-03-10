@@ -8,20 +8,17 @@
 
 import Cocoa
 
-extension ActionListener {
-    @IBAction func quit(_ sender: Any?) {
-        NSApplication.shared.terminate(nil)
-    }
-}
-
 class QuitItem: StatusItem {
     let menuItem = NSMenuItem()
-    private let listener = ActionListener()
     
     init() {
         let format = NSLocalizedString("Quit %@", comment: "Quit Menu Item")
         menuItem.title = String(format: format, AppDelegate.appName)
-        menuItem.action = #selector(ActionListener.quit(_:))
-        menuItem.target = listener
+        menuItem.action = #selector(quit(_:))
+        menuItem.target = self
+    }
+    
+    @IBAction func quit(_ sender: Any?) {
+        NSApplication.shared.terminate(nil)
     }
 }
