@@ -68,13 +68,14 @@ final class StatusBar: NSObject {
 extension StatusBar: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
         let url = Screenshot.shared.location
-        items
-            .flatMap { $0 as? FolderItem }
-            .forEach { $0.update(url) }
         recentItems.forEach { $0.update(url) }
-        items
-            .flatMap { $0 as? ImageTypeItem }
-            .forEach { $0.update() }
+        items.forEach { item in
+            switch item {
+            case let f as FolderItem: f.update(url)
+            case let i as ImageTypeItem: i.update()
+            default: ()
+            }
+        }
     }
 }
 
