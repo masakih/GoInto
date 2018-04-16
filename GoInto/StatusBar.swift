@@ -9,15 +9,20 @@
 import Cocoa
 
 final class StatusBar: NSObject {
+    
     let myStatusBar = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     let menu = NSMenu()
+    
     private(set) var items: [StatusItem] = []
     private(set) var recentItems = LimitedArray<FolderItem>(5) {
+        
         didSet { UserDefaults.standard.recentURLs = recentItems.map { $0.url } }
     }
     
     override init() {
+        
         super.init()
+        
         menu.delegate = self
         
         myStatusBar.menu = menu
@@ -27,6 +32,7 @@ final class StatusBar: NSObject {
     }
     
     private func build() {
+        
         items = [
             FolderItem(desktopURL()),
             FolderItem(picturesURL()),
@@ -53,26 +59,35 @@ final class StatusBar: NSObject {
         let newItem = FolderItem(url)
         recentItems.append(newItem)
         newItem.enter(menu)
+        
         return newItem
     }
     
     private func appendFolder(_ url: URL) {
+        
         _ = newFolderItem(url)
     }
     
     private func appendAndChooseFolder(_ url: URL) {
+        
         newFolderItem(url)?.set()
     }
 }
 
 extension StatusBar: NSMenuDelegate {
+    
     func menuWillOpen(_ menu: NSMenu) {
+        
         let url = Screenshot.shared.location
         recentItems.forEach { $0.update(url) }
         items.forEach { item in
+            
             switch item {
+                
             case let f as FolderItem: f.update(url)
+                
             case let i as ImageTypeItem: i.update()
+                
             default: ()
             }
         }
@@ -81,15 +96,17 @@ extension StatusBar: NSMenuDelegate {
 
 
 fileprivate func picturesURL() -> URL {
+    
     return FileManager
         .default
         .urls(for: .picturesDirectory,
-              in: .userDomainMask).last ?? URL(fileURLWithPath: NSHomeDirectory())
+              in: .userDomainMask).last ?? FileManager.default.homeDirectoryForCurrentUser
 }
 
 func desktopURL() -> URL {
+    
     return FileManager
         .default
         .urls(for: .desktopDirectory,
-              in: .userDomainMask).last ?? URL(fileURLWithPath: NSHomeDirectory())
+              in: .userDomainMask).last ?? FileManager.default.homeDirectoryForCurrentUser
 }

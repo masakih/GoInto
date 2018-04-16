@@ -14,9 +14,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusBar = StatusBar()
     
     class var appName: String {
+        
         guard let dict = Bundle.main.localizedInfoDictionary,
-            let name = dict["CFBundleDisplayName"] as? String
-            else { return "GO into" }
+            let name = dict["CFBundleDisplayName"] as? String else {
+                
+                return "GO into"
+        }
         return name
     }
 }

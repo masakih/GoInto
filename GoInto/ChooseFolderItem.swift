@@ -9,10 +9,12 @@
 import Cocoa
 
 class ChooseFolderItem: StatusItem {
+    
     let menuItem = NSMenuItem()
     let urlSelector: (URL) -> Void
     
     init(_ handler: @escaping ((URL) -> Void)) {
+        
         urlSelector = handler
         menuItem.title = NSLocalizedString("Choose Folder", comment: "Choose Folder MenuItem")
         menuItem.action = #selector(selectFolder(_:))
@@ -20,6 +22,7 @@ class ChooseFolderItem: StatusItem {
     }
     
     @IBAction func selectFolder(_ sender: Any?) {
+        
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
@@ -31,7 +34,10 @@ class ChooseFolderItem: StatusItem {
         
         NSApplication.shared.activate(ignoringOtherApps: true)
         guard panel.runModal() == NSApplication.ModalResponse(NSFileHandlingPanelOKButton),
-            let url = panel.directoryURL else { return }
+            let url = panel.directoryURL else {
+                
+                return
+        }
         urlSelector(url)
     }
 }

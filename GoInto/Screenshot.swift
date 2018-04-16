@@ -11,7 +11,9 @@ import Foundation
 class Screenshot {
     
     private enum Attrubute: String {
+        
         case location = "location"
+        
         case type = "type"
     }
     
@@ -20,16 +22,19 @@ class Screenshot {
     private init() {}
     
     var location: URL {
+        
         get { return screencaptureAttribute(.location).map { URL(fileURLWithPath: $0) } ?? desktopURL() }
         set { setScreencaptureAttribute(newValue.path, for: .location) }
     }
     var type: String {
+        
         get { return screencaptureAttribute(.type) ?? "jpeg" }
         set { setScreencaptureAttribute(newValue, for: .type) }
     }
     
     @available(macOS, deprecated: 10.12)
     func apply() {
+        
         let process = Process()
         process.launchPath = "/usr/bin/killall"
         process.arguments = ["SystemUIServer"]
@@ -37,6 +42,7 @@ class Screenshot {
     }
     
     private func screencaptureAttribute(_ attr: Attrubute) -> String? {
+        
         let process = Process()
         process.launchPath = "/usr/bin/defaults"
         process.arguments = ["read", "com.apple.screencapture", attr.rawValue]
@@ -48,20 +54,26 @@ class Screenshot {
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         guard let output = String(data: data, encoding: .utf8),
             let type = output.components(separatedBy: "\n").first,
-            process.terminationStatus == 0
-            else { return nil }
+            process.terminationStatus == 0 else {
+                
+                return nil
+        }
+        
         return type
     }
+    
     private func setScreencaptureAttribute(_ value: String, for attr: Attrubute) {
+        
         let process = Process()
         process.launchPath = "/usr/bin/defaults"
         process.arguments = ["write", "com.apple.screencapture", attr.rawValue, value]
         process.launch()
         process.waitUntilExit()
         
-        guard process.terminationStatus == 0
-            else {
+        guard process.terminationStatus == 0 else {
+            
                 print("Can not set location")
+            
                 return
         }
     }
