@@ -17,6 +17,6 @@
 	<string>com.apple.atx</string>
 	<string>org.khronos.astc</string>
 	<string>org.khronos.ktx</string>
-	<string>com.apple.rjpeg</string>
+	<string>public.heic</string>
 </array>
 </plist>
