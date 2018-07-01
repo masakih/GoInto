@@ -43,38 +43,13 @@ class Screenshot {
     
     private func screencaptureAttribute(_ attr: Attrubute) -> String? {
         
-        let process = Process()
-        process.launchPath = "/usr/bin/defaults"
-        process.arguments = ["read", "com.apple.screencapture", attr.rawValue]
-        let pipe = Pipe()
-        process.standardOutput = pipe
-        process.launch()
-        process.waitUntilExit()
-        
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        guard let output = String(data: data, encoding: .utf8),
-            let type = output.components(separatedBy: "\n").first,
-            process.terminationStatus == 0 else {
-                
-                return nil
-        }
-        
-        return type
+        return UserDefaults(suiteName: "com.apple.screencapture")?
+                .object(forKey: attr.rawValue) as? String
     }
     
     private func setScreencaptureAttribute(_ value: String, for attr: Attrubute) {
         
-        let process = Process()
-        process.launchPath = "/usr/bin/defaults"
-        process.arguments = ["write", "com.apple.screencapture", attr.rawValue, value]
-        process.launch()
-        process.waitUntilExit()
-        
-        guard process.terminationStatus == 0 else {
-            
-                print("Can not set location")
-            
-                return
-        }
+        UserDefaults(suiteName: "com.apple.screencapture")?
+            .set(value, forKey: attr.rawValue)
     }
 }
