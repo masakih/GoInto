@@ -6,9 +6,8 @@
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
 //
 
-import Foundation
 
-struct LimitedArray<Element: Equatable>: Collection {
+struct LimitedArray<Element: Equatable>: Sequence {
     
     private(set) var array: [Element] = []
     let size: Int
@@ -20,33 +19,21 @@ struct LimitedArray<Element: Equatable>: Collection {
     
     mutating func append(_ newObject: Element) {
         
-        if let index = array.index(of: newObject) {
+        if let index = array.firstIndex(of: newObject) {
             
             array.remove(at: index)
         }
         array.insert(newObject, at: 0)
         if array.count > size {
             
-            array.remove(at: size)
+            array.dropLast()
         }
     }
     
-    // Collection
-    var startIndex: Int {
+    // Sequence
+    func makeIterator() -> IndexingIterator<Array<Element>> {
         
-        return array.startIndex
-    }
-    var endIndex: Int {
-        
-        return array.endIndex
-    }
-    func index(after i: Int) -> Int {
-        
-        return array.index(after: i)
-    }
-    subscript(position: Int) -> Element {
-        
-        return array[position]
+        return array.makeIterator()
     }
 }
 extension LimitedArray: CustomDebugStringConvertible {
