@@ -23,13 +23,13 @@ class Screenshot {
     
     var location: URL {
         
-        get { return screencaptureAttribute(.location).map { URL(fileURLWithPath: $0) } ?? desktopURL() }
-        set { setScreencaptureAttribute(newValue.path, for: .location) }
+        get { return self[.location].map { URL(fileURLWithPath: $0) } ?? desktopURL() }
+        set { self[.location] = newValue.path }
     }
     var type: String {
         
-        get { return screencaptureAttribute(.type) ?? "jpeg" }
-        set { setScreencaptureAttribute(newValue, for: .type) }
+        get { return self[.type] ?? "jpeg" }
+        set { self[.type] = newValue }
     }
     
     @available(macOS, deprecated: 10.12)
@@ -41,15 +41,14 @@ class Screenshot {
         process.launch()
     }
     
-    private func screencaptureAttribute(_ attr: Attrubute) -> String? {
-        
-        return UserDefaults(suiteName: "com.apple.screencapture")?
+    private subscript(_ attr: Attrubute) -> String? {
+        get { 
+            UserDefaults(suiteName: "com.apple.screencapture")?
                 .object(forKey: attr.rawValue) as? String
-    }
-    
-    private func setScreencaptureAttribute(_ value: String, for attr: Attrubute) {
-        
-        UserDefaults(suiteName: "com.apple.screencapture")?
-            .set(value, forKey: attr.rawValue)
+        }
+        set { 
+            UserDefaults(suiteName: "com.apple.screencapture")?
+                .set(newValue, forKey: attr.rawValue)
+        }
     }
 }
