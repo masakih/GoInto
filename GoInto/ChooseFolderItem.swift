@@ -33,7 +33,7 @@ class ChooseFolderItem: StatusItem {
         panel.message = NSLocalizedString("Choose Folder for Save Screenshot", comment: "Choose Folder Open Panel Message")
         
         NSApplication.shared.activate(ignoringOtherApps: true)
-        guard panel.runModal() == NSApplication.ModalResponse(NSFileHandlingPanelOKButton),
+        guard panel.runModal() == NSApplication.ModalResponse(NSApplication.ModalResponse.OK.rawValue),
             let url = panel.directoryURL else {
                 
                 return
