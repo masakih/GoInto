@@ -8,6 +8,8 @@
 
 import Cocoa
 
+import UniformTypeIdentifiers
+
 private func loadImageTypes() -> [String] {
     
     guard let url = Bundle.main.url(forResource: "ImageType", withExtension: "plist"),
@@ -28,18 +30,17 @@ class ImageTypeItem: StatusItem {
         
         menuItem.title = NSLocalizedString("Image Type", comment: "Image Type MenuItem")
         
-        let ws = NSWorkspace.shared
         menuItem.submenu = NSMenu()
         
         supportTypes
-            .filter { ws.localizedDescription(forType: $0) != nil }
-            .map {
+            .compactMap(UTType.init)
+            .map { (i: UTType) in
                 
                 let item = NSMenuItem()
-                item.title = ws.localizedDescription(forType: $0) ?? "Never Use Default Value"
+                item.title = i.localizedDescription ?? "Never Use Default Value"
                 item.action = #selector(selectType(_:))
                 item.target = self
-                item.representedObject = ws.preferredFilenameExtension(forType: $0)
+                item.representedObject = i.preferredFilenameExtension
                 
                 return item
             }
