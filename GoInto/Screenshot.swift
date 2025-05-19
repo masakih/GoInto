@@ -51,5 +51,10 @@ class Screenshot {
         
         UserDefaults(suiteName: "com.apple.screencapture")?
             .set(value, forKey: attr.rawValue)
+        
+        if attr == .location {
+            UserDefaults(suiteName: "com.apple.screencapture")?
+                .set("file", forKey: "target")
+        }
     }
 }
