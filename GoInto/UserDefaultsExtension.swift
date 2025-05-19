@@ -10,32 +10,36 @@ import Foundation
 
 extension UserDefaults {
     
-    func set(archived: Any?, forKey: String) {
+    enum CustomKey: String {
         
-        if let object = archived {
-            
-            let data = NSKeyedArchiver.archivedData(withRootObject: object)
-            set(data, forKey: forKey)
-            
-        } else {
-            
-            set(nil, forKey: forKey)
-        }
+        case recentURLs
     }
     
-    func unarchiveObject(forKey: String) -> Any? {
+    func set<T: Encodable>(encodedJSON value: T?, forKey key: CustomKey) {
         
-        if let data = object(forKey: forKey) as? Data {
+        guard let value, let data = try? JSONEncoder().encode(value) else {
             
-            return NSKeyedUnarchiver.unarchiveObject(with: data)
+            set(nil, forKey: key.rawValue)
+            return
         }
         
-        return nil
+        set(data, forKey: key.rawValue)
+        
+    }
+    
+    func decodedJSON<T: Decodable>(_ type: T.Type, forKey key: CustomKey) -> T? {
+        
+        guard let data = object(forKey: key.rawValue) as? Data else {
+            
+            return nil
+        }
+        
+        return try? JSONDecoder().decode(type, from: data)
     }
     
     var recentURLs: [URL]? {
         
-        get { return unarchiveObject(forKey: "recentURLs") as? [URL] }
-        set { set(archived: newValue, forKey: "recentURLs") }
+        get { decodedJSON([URL].self, forKey: .recentURLs) }
+        set { set(encodedJSON: newValue, forKey: .recentURLs) }
     }
 }
