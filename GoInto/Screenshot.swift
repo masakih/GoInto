@@ -23,7 +23,12 @@ class Screenshot {
     
     var location: URL {
         
-        get { return screencaptureAttribute(.location).map { URL(fileURLWithPath: $0) } ?? desktopURL() }
+        get {
+            screencaptureAttribute(.location)
+                .map {
+                    URL(fileURLWithPath: ($0 as NSString).expandingTildeInPath)
+                } ?? desktopURL()
+        }
         set { setScreencaptureAttribute(newValue.path, for: .location) }
     }
     var type: String {
