@@ -23,8 +23,14 @@ class Screenshot {
     
     var location: URL {
         
-        get { return self[.location].map { URL(fileURLWithPath: $0) } ?? desktopURL() }
-        set { self[.location] = newValue.path }
+        get {
+            self[.location]
+                .map {
+                    URL(fileURLWithPath: ($0 as NSString).expandingTildeInPath)
+                } ?? desktopURL()
+        }
+         set { self[.location] = newValue.path }
+
     }
     var type: String {
         
@@ -49,6 +55,10 @@ class Screenshot {
         set { 
             UserDefaults(suiteName: "com.apple.screencapture")?
                 .set(newValue, forKey: attr.rawValue)
+
+            if attr == .location {
+                UserDefaults(suiteName: "com.apple.screencapture")?
+                    .set("file", forKey: "target")
         }
     }
 }
