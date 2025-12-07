@@ -33,11 +33,11 @@ struct LimitedArray<Element: Equatable>: Sequence {
     // Sequence
     func makeIterator() -> IndexingIterator<Array<Element>> {
         
-        return array.makeIterator()
+        array.makeIterator()
     }
 }
 extension LimitedArray: CustomDebugStringConvertible {
     
-    var description: String { return array.description }
-    var debugDescription: String { return array.debugDescription }
+    var description: String { array.description }
+    var debugDescription: String { array.debugDescription }
 }

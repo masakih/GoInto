@@ -85,6 +85,6 @@ extension FolderItem: Equatable {
     
     static func ==(lhs: FolderItem, rhs: FolderItem) -> Bool {
         
-        return lhs.url == rhs.url
+        lhs.url == rhs.url
     }
 }
