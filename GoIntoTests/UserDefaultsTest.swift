@@ -6,27 +6,26 @@
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
 //
 
-import XCTest
+import Foundation
+import Testing
 
 @testable import GoInto
 
-class UserDefaultsTest: XCTestCase {
+class UserDefaultsTest {
     
     var originalURLs: [URL]? = []
     
-    override func setUp() {
-        
-        super.setUp()
+    init() {
         originalURLs = UserDefaults.standard.recentURLs
     }
     
-    override func tearDown() {
+    deinit {
         
         UserDefaults.standard.recentURLs = originalURLs
-        super.tearDown()
     }
     
-    func testRecentFolders() {
+    @Test
+    func testRecentFolders() throws {
         
         let urls = [URL(fileURLWithPath: "/System/"),
                     URL(fileURLWithPath: "/Users/"),
@@ -34,10 +33,8 @@ class UserDefaultsTest: XCTestCase {
         
         UserDefaults.standard.recentURLs = urls
         
-        let storedData = UserDefaults.standard.recentURLs
-        XCTAssertNotNil(storedData)
-        guard let stored = storedData else { return }
+        let stored = try #require(UserDefaults.standard.recentURLs)
         
-        XCTAssertEqual(urls, stored)
+        #expect(urls == stored)
     }
 }

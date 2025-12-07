@@ -6,31 +6,31 @@
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
 //
 
-import XCTest
+import Testing
 
 @testable import GoInto
 
-class LimitedArrayTest: XCTestCase {
+struct LimitedArrayTest {
 
-    func testExample() {
+    @Test func testExample() {
         
         var limited = LimitedArray<Int>(3)
-        XCTAssertEqual(limited.array, [])
+        #expect(limited.array == [])
         
         limited.append(1)
-        XCTAssertEqual(limited.array, [1])
+        #expect(limited.array == [1])
         limited.append(2)
-        XCTAssertEqual(limited.array, [2, 1])
+        #expect(limited.array == [2, 1])
         limited.append(3)
-        XCTAssertEqual(limited.array, [3, 2, 1])
+        #expect(limited.array == [3, 2, 1])
         
         // push out
         limited.append(4)
-        XCTAssertEqual(limited.array, [4, 3, 2])
+        #expect(limited.array == [4, 3, 2])
         
         // replace
         limited.append(3)
-        XCTAssertEqual(limited.array, [3, 4, 2])
+        #expect(limited.array == [3, 4, 2])
     }
 
 }
