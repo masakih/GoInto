@@ -26,7 +26,7 @@ struct LimitedArray<Element: Equatable>: Sequence {
         array.insert(newObject, at: 0)
         if array.count > size {
             
-            array.dropLast()
+            array.removeLast()
         }
     }
     
