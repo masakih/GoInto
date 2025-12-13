@@ -7,21 +7,24 @@
 //
 
 import Cocoa
+import Combine
 
 class QuitItem: StatusItem {
     
     let menuItem = NSMenuItem()
     
+    private var cancellalbes: [AnyCancellable] = []
+    
     init() {
         
         let format = NSLocalizedString("Quit %@", comment: "Quit Menu Item")
         menuItem.title = String(format: format, AppDelegate.appName)
-        menuItem.action = #selector(quit(_:))
-        menuItem.target = self
-    }
-    
-    @IBAction func quit(_ sender: Any?) {
+        menuItem
+            .actionPublisher()
+            .sink { _ in
+                NSApplication.shared.terminate(nil)
+            }
+            .store(in: &cancellalbes)
         
-        NSApplication.shared.terminate(nil)
     }
 }

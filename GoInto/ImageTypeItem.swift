@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-
+import Combine
 import UniformTypeIdentifiers
 
 private func loadImageTypes() -> [String] {
@@ -25,6 +25,7 @@ class ImageTypeItem: StatusItem {
     
     let menuItem = NSMenuItem()
     private let supportTypes = loadImageTypes()
+    private var cancellables: Set<AnyCancellable> = []
     
     init() {
         
@@ -38,13 +39,19 @@ class ImageTypeItem: StatusItem {
                 
                 let item = NSMenuItem()
                 item.title = i.localizedDescription ?? "Never Use Default Value"
-                item.action = #selector(selectType(_:))
-                item.target = self
-                item.representedObject = i.preferredFilenameExtension
+                item
+                    .actionPublisher()
+                    .sink { [weak self] _ in
+                        guard let typeName = i.preferredFilenameExtension else { return }
+                        self?.set(typeName)
+                    }
+                    .store(in: &cancellables)
                 
                 return item
             }
-            .forEach { menuItem.submenu?.addItem($0) }
+            .forEach {
+                menuItem.submenu?.addItem($0)
+            }
     }
     
     func update() {
@@ -71,15 +78,5 @@ class ImageTypeItem: StatusItem {
             Screenshot.shared.type = typeName
         }
     }
-    
-    @IBAction func selectType(_ sender: Any?) {
-        
-        guard let item = sender as? NSMenuItem,
-            let typeName = item.representedObject as? String else {
-                
-                return
-        }
-        
-        set(typeName)
-    }
 }
+

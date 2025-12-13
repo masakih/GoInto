@@ -15,6 +15,7 @@
 		F414DD031EABAB7300111DA7 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414DD021EABAB7300111DA7 /* UserDefaultsExtension.swift */; };
 		F46F2DAE2EE5D18600D74FB5 /* LimitedArrayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F2DAD2EE5D18600D74FB5 /* LimitedArrayTest.swift */; };
 		F46F2DAF2EE5D9E100D74FB5 /* UserDefaultsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42539DF1EACCEDE0083EB9D /* UserDefaultsTest.swift */; };
+		F46F2DB12EE5E4E100D74FB5 /* ActionPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F2DB02EE5E4E100D74FB5 /* ActionPublisher.swift */; };
 		F47B06EB1E9A5DF9006711D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */; };
 		F47B06EF1E9A5DF9006711D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */; };
 		F47B07081E9A6071006711D9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47B07071E9A6071006711D9 /* MainMenu.xib */; };
@@ -47,6 +48,7 @@
 		F414DD021EABAB7300111DA7 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		F42539DF1EACCEDE0083EB9D /* UserDefaultsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsTest.swift; sourceTree = "<group>"; };
 		F46F2DAD2EE5D18600D74FB5 /* LimitedArrayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedArrayTest.swift; sourceTree = "<group>"; };
+		F46F2DB02EE5E4E100D74FB5 /* ActionPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPublisher.swift; sourceTree = "<group>"; };
 		F47B06E71E9A5DF9006711D9 /* GoInto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoInto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F47B06EE1E9A5DF9006711D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				F47B07071E9A6071006711D9 /* MainMenu.xib */,
 				F47B06EA1E9A5DF9006711D9 /* AppDelegate.swift */,
 				F414DD021EABAB7300111DA7 /* UserDefaultsExtension.swift */,
+				F46F2DB02EE5E4E100D74FB5 /* ActionPublisher.swift */,
 				F40EB6D11EA2F28100FEE444 /* Screenshot.swift */,
 				F47B070D1E9A6E55006711D9 /* StatusBar.swift */,
 				F47B070B1E9A65FA006711D9 /* StatusItem.swift */,
@@ -244,6 +247,7 @@
 				F47B07101EA10A1A006711D9 /* FolderItem.swift in Sources */,
 				F40EB6D21EA2F28100FEE444 /* Screenshot.swift in Sources */,
 				F47B07181EA10A88006711D9 /* QuitItem.swift in Sources */,
+				F46F2DB12EE5E4E100D74FB5 /* ActionPublisher.swift in Sources */,
 				F40EB6C81EA1CD7A00FEE444 /* ImageTypeItem.swift in Sources */,
 				F47B070E1E9A6E55006711D9 /* StatusBar.swift in Sources */,
 				F4D346941EA644170031AFB3 /* LimitedArray.swift in Sources */,

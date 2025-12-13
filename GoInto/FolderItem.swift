@@ -7,11 +7,14 @@
 //
 
 import Cocoa
+import Combine
 
 final class FolderItem: StatusItem {
     
     let url: URL
     let menuItem = NSMenuItem()
+    
+    private var cancellalbes: [AnyCancellable] = []
     
     init(_ url: URL) {
         
@@ -29,8 +32,12 @@ final class FolderItem: StatusItem {
         
         let work = NSWorkspace.shared
         menuItem.image = fitSize(work.icon(forFile: url.path))
-        menuItem.action = #selector(changeFolder(_:))
-        menuItem.target = self
+        menuItem
+            .actionPublisher()
+            .sink { [weak self] _ in
+                self?.set()
+            }
+            .store(in: &cancellalbes)
     }
     
     deinit {
@@ -59,11 +66,6 @@ final class FolderItem: StatusItem {
     func update(_ url: URL) {
         
         menuItem.state = (self.url == url ? .on : .off)
-    }
-    
-    @IBAction func changeFolder(_ sender: Any?) {
-        
-        set()
     }
 }
 

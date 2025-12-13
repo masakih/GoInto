@@ -7,21 +7,29 @@
 //
 
 import Cocoa
+import Combine
 
 class ChooseFolderItem: StatusItem {
     
     let menuItem = NSMenuItem()
     let urlSelector: (URL) -> Void
     
+    private var cancellalbes: [AnyCancellable] = []
+    
     init(_ handler: @escaping ((URL) -> Void)) {
         
         urlSelector = handler
         menuItem.title = NSLocalizedString("Choose Folder", comment: "Choose Folder MenuItem")
-        menuItem.action = #selector(selectFolder(_:))
-        menuItem.target = self
+        menuItem
+            .actionPublisher()
+            .sink { [weak self] _ in
+                self?.selectFolder()
+            }
+            .store(in: &cancellalbes)
+        
     }
     
-    @IBAction func selectFolder(_ sender: Any?) {
+    func selectFolder() {
         
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
